@@ -7,28 +7,44 @@ for i in 1...100{
     hundred.append(i)
 }
 
+
+//declare parameterized function
 func binarySearchForSearchValue(searchValue: Int,array: [Int])-> Bool {
+    
     
     let leftIndex = 0
     var rightIndex = array.count - 1
     
     while leftIndex <= rightIndex {
         
-        let middleIndex = (leftIndex + rightIndex) / 2
-        let middleValue = array[middleIndex]
+        let middleIndex = (leftIndex + rightIndex) / 2 
+        
+        //assign middleindex array value to variable middleValue
+        let middleValue = array[middleIndex]    
+        
         
         print("middle index is \(middleValue), left index is \(leftIndex), right index is \(rightIndex)")
         
+        //look if middle value is equal to the value searched 
         if middleValue == searchValue {
             return true
         }
+        
+        //if the searched value is greater than middle value then inrement middle value index until you get the value
         if searchValue < middleValue {
             rightIndex = middleIndex - 1
         }
-        if searchValue < middleValue {
-                 rightIndex = middleIndex + 1
+        
+        
+        //if the searched value is smaller than the middle value then decreament middle value index until you get the value equal
+        if searchValue > middleValue {
+                 leftIndex = middleIndex + 1
         }
     }
+    
+    //if the searched value is not eual to any value in array print false 
     return false
     }
+    
+ // give input in parameterized function
 print(binarySearchForSearchValue(searchValue: 78, array: hundred))
