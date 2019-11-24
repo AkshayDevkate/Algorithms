@@ -1,0 +1,34 @@
+import UIKit
+
+let numbers = [1,2,3,4,5,6,7,8,9,10,44,52,61,89]
+
+var hundred = [Int]()
+for i in 1...100{
+    hundred.append(i)
+}
+
+func binarySearchForSearchValue(searchValue: Int,array: [Int])-> Bool {
+    
+    let leftIndex = 0
+    var rightIndex = array.count - 1
+    
+    while leftIndex <= rightIndex {
+        
+        let middleIndex = (leftIndex + rightIndex) / 2
+        let middleValue = array[middleIndex]
+        
+        print("middle index is \(middleValue), left index is \(leftIndex), right index is \(rightIndex)")
+        
+        if middleValue == searchValue {
+            return true
+        }
+        if searchValue < middleValue {
+            rightIndex = middleIndex - 1
+        }
+        if searchValue < middleValue {
+                 rightIndex = middleIndex + 1
+        }
+    }
+    return false
+    }
+print(binarySearchForSearchValue(searchValue: 78, array: hundred))
